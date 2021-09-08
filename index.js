@@ -9,13 +9,14 @@ const categoryAPI = require('./src/routes/catogary.api');
 const SupplierAPI = require('./src/routes/supplier.route');
 const InventoryAPI = require('./src/routes/inventory.route');
 const insertpaymentAPI = require('./src/routes/insertpayment.route');
+const addcusAPI = require('./src/routes/addcus.route');
 
 dotenv.config();
 app.use(bodyParser.json());
 app.use(cors());
 const MONGODB_URI = process.env.MONGODB_URI;
 const port = process.env.PORT;
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(MONGODB_URI, { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
@@ -30,6 +31,10 @@ app.use('/category', categoryAPI());
 app.use('/supplier', SupplierAPI());
 app.use('/inventory', InventoryAPI());
 app.use('/insertpayment', insertpaymentAPI());
+app.use('/addcus', addcusAPI());
 
 
 app.listen(port, () => console.log("You are listening to port " + port));
+
+
+
