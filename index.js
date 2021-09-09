@@ -10,6 +10,8 @@ const SupplierAPI = require('./src/routes/supplier.route');
 const InventoryAPI = require('./src/routes/inventory.route');
 const insertpaymentAPI = require('./src/routes/insertpayment.route');
 const addcusAPI = require('./src/routes/addcus.route');
+const VehicleInfoAPI = require('./src/routes/vehicleInfo.route');
+const DeliveryInfoAPI = require('./src/routes/deliveryInfo.route');
 
 dotenv.config();
 app.use(bodyParser.json());
@@ -32,6 +34,8 @@ app.use('/supplier', SupplierAPI());
 app.use('/inventory', InventoryAPI());
 app.use('/insertpayment', insertpaymentAPI());
 app.use('/addcus', addcusAPI());
+app.use('/vehicleInfo', VehicleInfoAPI());
+app.use('/deliveryInfo', DeliveryInfoAPI());
 
 
 app.listen(port, () => console.log("You are listening to port " + port));
