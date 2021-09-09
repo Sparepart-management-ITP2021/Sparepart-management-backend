@@ -10,6 +10,9 @@ const SupplierAPI = require('./src/routes/supplier.route');
 const InventoryAPI = require('./src/routes/inventory.route');
 const insertpaymentAPI = require('./src/routes/insertpayment.route');
 const addcusAPI = require('./src/routes/addcus.route');
+const EmployeeAPI = require('./src/routes/employee.route');
+const AttendanceAPI = require('./src/routes/attendance.route');
+const LeaveAPI = require('./src/routes/leave.route');
 
 dotenv.config();
 app.use(bodyParser.json());
@@ -24,7 +27,6 @@ mongoose.connect(MONGODB_URI, {
 }).catch((err) => {
     console.log(err);
 });
-
 app.get("/", (req, res) => res.send("Hello World!"));
 
 app.use('/category', categoryAPI());
@@ -32,9 +34,13 @@ app.use('/supplier', SupplierAPI());
 app.use('/inventory', InventoryAPI());
 app.use('/insertpayment', insertpaymentAPI());
 app.use('/addcus', addcusAPI());
+app.use('/employee', EmployeeAPI());
+app.use('/attendance', AttendanceAPI());
+app.use('/leave', LeaveAPI());
 
 
 app.listen(port, () => console.log("You are listening to port " + port));
+
 
 
 
