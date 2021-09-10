@@ -4,8 +4,8 @@ const router = express.Router();
 const addcusController = require('../controllers/addcus.controller');
 
 const addcusAPI = () => {
-  router.post("/add-customer", addcusController.addCustomer);
-  
+  router.post("/add-addcus", addcusController.addAddcus);
+  router.get("/get-addcus", addcusController.getAddcus);
 
   return router;
 }

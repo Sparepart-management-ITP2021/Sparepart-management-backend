@@ -1,11 +1,11 @@
-const Customer = require('../models/addcus.model');
+const Addcus = require('../models/addcus.model');
 
 
 //add customer
-const addCustomer = async(req, res) => {
+const addAddcus = async(req, res) => {
   try {
     if (req.body) {
-        const addcus = new Customer(req.body);
+        const addcus = new Addcus(req.body);
         await addcus.save()
             .then((data) => {
                 res.status(200).send({ data: data });
@@ -21,6 +21,23 @@ const addCustomer = async(req, res) => {
 }
 }
 
+const getAddcus = async(req, res) => {
+  try {
+     await Addcus.find({ })
+         .then((data) => {
+           res.status(200).send({ data: data });
+       })
+ 
+         .catch((error) => {
+             res.status(500).send({ error: error });
+           })
+              
+          } catch (error) {
+               res.send({ error: error.message });
+           }
+     }
+
 module.exports = {
-  addCustomer
+  addAddcus,
+  getAddcus
 }
