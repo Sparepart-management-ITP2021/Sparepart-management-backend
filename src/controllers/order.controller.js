@@ -1,11 +1,12 @@
-const Supplier = require('../models/supplier.model');
+const Order = require('../models/order.model');
 
-//add supplier
-const addSupplier = async(req, res) => {
+//add order
+
+const addOrder = async(req, res) => {
     try {
         if (req.body) {
-            const supplier = new Supplier(req.body);
-            await supplier.save()
+            const order = new Order(req.body);
+            await order.save()
                 .then((data) => {
                     res.status(200).send({ data: data });
                 })
@@ -20,9 +21,9 @@ const addSupplier = async(req, res) => {
     }
 }
 
-const getSupplier = async(req, res) => {
+const getOrder = async(req, res) => {
     try {
-       await Supplier.find({ })
+       await Order.find({ })
            .then((data) => {
              res.status(200).send({ data: data });
          })
@@ -37,10 +38,24 @@ const getSupplier = async(req, res) => {
        }
 
 
-     
+       const deleteOrder = async (req,res) => {
+        try {
+            if(req.params.id){
+                await Order.findByIdAndDelete(req.params.id)
+                .then(data => {
+                    res.status(200).send({data: data});
+                })
+                .catch(error => {
+                    res.status(500).send({error: error.message});
+                })
+            }
+        } catch (error) {
+            res.send({error: error.message});
+        }
+    } 
 
 module.exports = {
-    addSupplier,
-    getSupplier
-    
+    addOrder,
+    getOrder,
+    deleteOrder
 }
