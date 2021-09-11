@@ -36,9 +36,26 @@ const getInventory = async(req, res) => {
              }
        }
 
+       const deleteInventory = async (req,res) => {
+        try {
+            if(req.params.id){
+                await Inventory.findByIdAndDelete(req.params.id)
+                .then(data => {
+                    res.status(200).send({data: data});
+                })
+                .catch(error => {
+                    res.status(500).send({error: error.message});
+                })
+            }
+        } catch (error) {
+            res.send({error: error.message});
+        }
+    } 
+
 module.exports = {
     addInventory,
-    getInventory
+    getInventory,
+    deleteInventory
 }
 
 
