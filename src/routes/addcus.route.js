@@ -5,6 +5,7 @@ const addcusController = require('../controllers/addcus.controller');
 
 const addcusAPI = () => {
   router.post("/add-customer", addcusController.addCustomer);
+  
 
   return router;
 }

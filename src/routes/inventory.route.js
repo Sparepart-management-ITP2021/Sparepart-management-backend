@@ -7,6 +7,8 @@ const InventoryController = require('../controllers/inventory.controller');
 const InventoryAPI = () => {
     router.post("/add-inventory", InventoryController.addInventory);
     router.get("/get-inventory", InventoryController.getInventory);
+    router.delete("/delete-item/:id", InventoryController.deleteInventory);
+    
     return router;
 }
 
