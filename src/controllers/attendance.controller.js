@@ -20,8 +20,25 @@ const addAttendance= async(req, res) => {
     }
 }
 
+const getAttendance = async(req, res) => {
+    try {
+       await Attendance.find({ })
+           .then((data) => {
+             res.status(200).send({ data: data });
+         })
+   
+           .catch((error) => {
+               res.status(500).send({ error: error });
+             })
+                
+            } catch (error) {
+                 res.send({ error: error.message });
+             }
+       }
+
 
 
 module.exports = {
-    addAttendance
+    addAttendance,
+    getAttendance
 }

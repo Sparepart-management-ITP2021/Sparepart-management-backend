@@ -20,8 +20,26 @@ const addLeave= async(req, res) => {
     }
 }
 
+const getLeave = async(req, res) => {
+    try {
+       await Leave.find({ })
+           .then((data) => {
+             res.status(200).send({ data: data });
+         })
+   
+           .catch((error) => {
+               res.status(500).send({ error: error });
+             })
+                
+            } catch (error) {
+                 res.send({ error: error.message });
+             }
+       }
+
+
 
 
 module.exports = {
-    addLeave
+    addLeave,
+    getLeave
 }

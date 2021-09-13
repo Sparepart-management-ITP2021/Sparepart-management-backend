@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const AttendanceSchema = new mongoose.Schema({
     crntdate: { type: String, required: true,  trim: true },
     crntTime: { type: String , required: true,  trim: true },
-    empid: { type: Number, required: true },
+    empid: { type: String, required: true, trim: true },
     
 });
 
