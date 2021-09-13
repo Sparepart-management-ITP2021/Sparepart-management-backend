@@ -6,7 +6,7 @@ const insertpaymentSchema = new mongoose.Schema({
     BillType: { type: String, required: true, trim: true },
     BillDate: { type: String, required: true, trim: true },
     BillAmount: { type: Number, required: true },
-    Checkedby: { type: String, required: true, trim: true },
+    Checkedby: { type: Number, required: true },
 });
 const Payment = mongoose.model('payments', insertpaymentSchema);
 

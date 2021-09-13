@@ -13,13 +13,16 @@ const addcusAPI = require('./src/routes/addcus.route');
 const EmployeeAPI = require('./src/routes/employee.route');
 const AttendanceAPI = require('./src/routes/attendance.route');
 const LeaveAPI = require('./src/routes/leave.route');
+const calculateSalaryAPI = require('./src/routes/calculateSalary.route');
+
+
 
 dotenv.config();
 app.use(bodyParser.json());
 app.use(cors());
 const MONGODB_URI = process.env.MONGODB_URI;
 const port = process.env.PORT;
-mongoose.connect(MONGODB_URI, { 
+mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
@@ -37,10 +40,10 @@ app.use('/addcus', addcusAPI());
 app.use('/employee', EmployeeAPI());
 app.use('/attendance', AttendanceAPI());
 app.use('/leave', LeaveAPI());
+app.use('/calculateSalary', calculateSalaryAPI());
+
+
+
 
 
 app.listen(port, () => console.log("You are listening to port " + port));
-
-
-
-

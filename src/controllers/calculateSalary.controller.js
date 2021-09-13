@@ -1,12 +1,12 @@
-const InsertPayment = require('../models/insertpayment.model');
+const CalculateSalary = require('../models/calculateSalary.model');
 
 //add payment
 
-const addInsertPayment = async(req, res) => {
+const addCalculateSalary = async(req, res) => {
     try {
         if (req.body) {
-            const insertpayment = new InsertPayment(req.body);
-            await insertpayment.save()
+            const calculateSalary = new CalculateSalary(req.body);
+            await calculateSalary.save()
                 .then((data) => {
                     res.status(200).send({ data: data });
                 })
@@ -21,9 +21,9 @@ const addInsertPayment = async(req, res) => {
     }
 }
 
-const getInsertPayment = async(req, res) => {
+const getCalculateSalary = async(req, res) => {
     try {
-        await InsertPayment.find({})
+        await CalculateSalary.find({})
             .then((data) => {
                 res.status(200).send({ data: data });
             })
@@ -38,6 +38,6 @@ const getInsertPayment = async(req, res) => {
 }
 
 module.exports = {
-    addInsertPayment,
-    getInsertPayment
+    addCalculateSalary,
+    getCalculateSalary
 }

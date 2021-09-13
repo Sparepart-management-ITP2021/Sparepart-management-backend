@@ -4,7 +4,8 @@ const router = express.Router();
 const insertpaymentController = require('../controllers/insertpayment.controller');
 
 const insertpaymentAPI = () => {
-    router.post("/add-payment", insertpaymentController.addpayment);
+    router.post("/add-insertpayment", insertpaymentController.addInsertPayment);
+    router.get("/get-insertpayment", insertpaymentController.getInsertPayment);
 
     return router;
 }
