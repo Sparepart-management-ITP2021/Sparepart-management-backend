@@ -40,4 +40,7 @@ app.get("/", (req, res) => res.send("Hello World!"));
 app.use('/category', categoryAPI());
 app.use('/supplier', SupplierAPI());
 app.use('/bill', BillAPI())
+app.use('/employee', EmployeeAPI() );
+app.use('/attendance',AttendanceAPI());
+app.use('/leave',LeaveAPI());
 app.listen(port, () => console.log("You are listening to port " + port));
