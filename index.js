@@ -7,14 +7,23 @@ const dotenv = require("dotenv");
 
 const categoryAPI = require('./src/routes/catogary.api');
 const SupplierAPI = require('./src/routes/supplier.route');
+
 const InventoryAPI = require('./src/routes/inventory.route');
 const insertpaymentAPI = require('./src/routes/insertpayment.route');
 const addcusAPI = require('./src/routes/addcus.route');
+
 const EmployeeAPI = require('./src/routes/employee.route');
 const AttendanceAPI = require('./src/routes/attendance.route');
 const LeaveAPI = require('./src/routes/leave.route');
 const calculateSalaryAPI = require('./src/routes/calculateSalary.route');
 
+
+
+const BillAPI = require('./src/routes/bill.route');
+
+
+
+const orderAPI = require('./src/routes/order.route');
 
 
 dotenv.config();
@@ -43,6 +52,12 @@ app.use('/leave', LeaveAPI());
 app.use('/calculateSalary', calculateSalaryAPI());
 
 
+
+
+
+
+app.use('/bill', BillAPI());
+app.use('/order', orderAPI());
 
 
 
