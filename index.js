@@ -7,18 +7,9 @@ const dotenv = require("dotenv");
 
 const categoryAPI = require('./src/routes/catogary.api');
 const SupplierAPI = require('./src/routes/supplier.route');
-<<<<<<< Updated upstream
-const InventoryAPI = require('./src/routes/inventory.route');
-const insertpaymentAPI = require('./src/routes/insertpayment.route');
-const addcusAPI = require('./src/routes/addcus.route');
-const EmployeeAPI = require('./src/routes/employee.route');
-const AttendanceAPI = require('./src/routes/attendance.route');
-const LeaveAPI = require('./src/routes/leave.route');
-=======
-const BillAPI = require('./src/routes/bill.route')
+const BillAPI = require('./src/routes/bill.route');
 
 
->>>>>>> Stashed changes
 
 dotenv.config();
 app.use(bodyParser.json());
@@ -37,21 +28,5 @@ app.get("/", (req, res) => res.send("Hello World!"));
 
 app.use('/category', categoryAPI());
 app.use('/supplier', SupplierAPI());
-<<<<<<< Updated upstream
-app.use('/inventory', InventoryAPI());
-app.use('/insertpayment', insertpaymentAPI());
-app.use('/addcus', addcusAPI());
-app.use('/employee', EmployeeAPI());
-app.use('/attendance', AttendanceAPI());
-app.use('/leave', LeaveAPI());
-
-
+app.use('/bill', BillAPI());
 app.listen(port, () => console.log("You are listening to port " + port));
-
-
-
-
-=======
-app.use('/bill', BillAPI())
-app.listen(port, () => console.log("You are listening to port " + port));
->>>>>>> Stashed changes
