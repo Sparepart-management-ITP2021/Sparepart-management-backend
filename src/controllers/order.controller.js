@@ -1,28 +1,29 @@
-const Inventory = require('../models/inventory.model');
+const Order = require('../models/order.model');
 
-const addInventory = async(req, res) => {
-    try{
-        if(req.body){
-            const inventory = new Inventory(req.body);
-             await inventory.save()
+//add order
+
+const addOrder = async(req, res) => {
+    try {
+        if (req.body) {
+            const order = new Order(req.body);
+            await order.save()
                 .then((data) => {
-                  res.status(200).send({ data: data});
+                    res.status(200).send({ data: data });
                 })
-
-             .catch((error)=> {
-                 res.status(500).send({error: error})
-             });
+                .catch((error) => {
+                    res.status(500).send({ error: error })
+                });
         } else {
-            console.log("please enter body values");
+            console.log('Please enter body values');
         }
     } catch (error) {
-        res.send({error:error.massage});
+        res.send({ error: error.message });
     }
 }
 
-const getInventory = async(req, res) => {
+const getOrder = async(req, res) => {
     try {
-       await Inventory.find({ })
+       await Order.find({ })
            .then((data) => {
              res.status(200).send({ data: data });
          })
@@ -36,10 +37,11 @@ const getInventory = async(req, res) => {
              }
        }
 
-       const deleteInventory = async (req,res) => {
+
+       const deleteOrder = async (req,res) => {
         try {
             if(req.params.id){
-                await Inventory.findByIdAndDelete(req.params.id)
+                await Order.findByIdAndDelete(req.params.id)
                 .then(data => {
                     res.status(200).send({data: data});
                 })
@@ -53,13 +55,7 @@ const getInventory = async(req, res) => {
     } 
 
 module.exports = {
-    addInventory,
-    getInventory,
-    deleteInventory
+    addOrder,
+    getOrder,
+    deleteOrder
 }
-
-
-
-
-
-
