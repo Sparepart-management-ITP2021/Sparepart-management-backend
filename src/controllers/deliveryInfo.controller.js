@@ -53,11 +53,37 @@ const deleteDeliveryInfo = async (req,res) => {
         }
     } 
 
+    const getDeliveryInfoById = async(req, res) => {
+        if(req.params.id){
+            await DeliveryInfo.findById(req.params.id)
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error });
+                });
+        }
+    }
+
+    const updateDeliveryInfo = async(req, res) => {
+        if(req.body && req.params.id){
+            await DeliveryInfo.findByIdAndUpdate(req.params.id, { $set: req.body })
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error })
+                });
+        }
+    }
+
 
 
 
 module.exports = {
     addDeliveryInfo,
     getDeliveryInfo,
-    deleteDeliveryInfo
+    deleteDeliveryInfo,
+    updateDeliveryInfo,
+    getDeliveryInfoById
 }

@@ -52,10 +52,36 @@ const getInventory = async(req, res) => {
         }
     } 
 
+    const getInventoryById = async(req, res) => {
+        if(req.params.id){
+            await Inventory.findById(req.params.id)
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error });
+                });
+        }
+    }
+
+    const updateInventory = async(req, res) => {
+        if(req.body && req.params.id){
+            await Inventory.findByIdAndUpdate(req.params.id, { $set: req.body })
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error })
+                });
+        }
+    }
+
 module.exports = {
     addInventory,
     getInventory,
-    deleteInventory
+    deleteInventory,
+    getInventoryById,
+    updateInventory
 }
 
 

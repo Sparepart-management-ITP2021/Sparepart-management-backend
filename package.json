@@ -1,5 +1,4 @@
 {
-
     "name": "sparepart-management-backend",
     "version": "1.0.0",
     "description": "",
@@ -20,5 +19,4 @@
     "devDependencies": {
         "nodemon": "^2.0.12"
     }
-
 }
