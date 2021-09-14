@@ -1,12 +1,11 @@
-const VehicleInfo = require('../models/vehicleInfo.model');
+const Bill = require('../models/bill.model');
 
-//add delivery info
-
-const addVehicleInfo = async(req, res) => {
-    try {
+//Add bill
+const addBill = async(req, res) => {
+    try{
         if (req.body) {
-            const vehicleInfo = new VehicleInfo(req.body);
-            await vehicleInfo.save()
+            const bill = new Bill(req.body);
+            await bill.save()
                 .then((data) => {
                     res.status(200).send({ data: data });
                 })
@@ -23,7 +22,17 @@ const addVehicleInfo = async(req, res) => {
 
 
 
-
 module.exports = {
-    addVehicleInfo
+    addBill
 }
+
+
+
+
+
+        
+
+
+    
+
+
