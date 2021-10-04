@@ -52,11 +52,36 @@ const getSupplier = async(req, res) => {
         }
     } 
 
+
+const getSupplierById = async(req, res) => {
+    if(req.params.id){
+        await Supplier.findById(req.params.id)
+            .then((data) => {
+                res.status(200).send({ data: data });
+            })
+            .catch((error) => {
+                res.status(500).send({ error: error });
+            });
+    }
+}
+
+const updateSupplier = async(req, res) => {
+    if(req.body && req.params.id){
+        await Supplier.findByIdAndUpdate(req.params.id, { $set: req.body })
+            .then((data) => {
+                res.status(200).send({ data: data });
+            })
+            .catch((error) => {
+                res.status(500).send({ error: error })
+            });
+    }
+}
      
 
 module.exports = {
     addSupplier,
     getSupplier,
-    deleteSupplier
-    
+    deleteSupplier,
+    getSupplierById,
+    updateSupplier
 }

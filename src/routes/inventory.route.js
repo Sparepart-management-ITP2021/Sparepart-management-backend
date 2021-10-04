@@ -8,6 +8,8 @@ const InventoryAPI = () => {
     router.post("/add-inventory", InventoryController.addInventory);
     router.get("/get-inventory", InventoryController.getInventory);
     router.delete("/delete-item/:id", InventoryController.deleteInventory);
+    router.get("/get-inventory/:id", InventoryController. getInventoryById);
+    router.put("/update-inventory/:id", InventoryController.updateInventory);
     
     return router;
 }
