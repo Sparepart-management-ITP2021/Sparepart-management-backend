@@ -11,7 +11,6 @@ const SupplierAPI = require('./src/routes/supplier.route');
 const InventoryAPI = require('./src/routes/inventory.route');
 const insertpaymentAPI = require('./src/routes/insertpayment.route');
 const addcusAPI = require('./src/routes/addcus.route');
-
 const EmployeeAPI = require('./src/routes/employee.route');
 const AttendanceAPI = require('./src/routes/attendance.route');
 const LeaveAPI = require('./src/routes/leave.route');
@@ -43,6 +42,7 @@ app.get("/", (req, res) => res.send("Hello World!"));
 
 app.use('/category', categoryAPI());
 app.use('/supplier', SupplierAPI());
+app.use('/bill', BillAPI())
 app.use('/inventory', InventoryAPI());
 app.use('/insertpayment', insertpaymentAPI());
 app.use('/addcus', addcusAPI());

@@ -20,10 +20,44 @@ const addBill = async(req, res) => {
     }
 }
 
+const getBill = async(req, res) => {
+    try {
+       await Bill.find({ })
+           .then((data) => {
+             res.status(200).send({ data: data });
+         })
+   
+           .catch((error) => {
+               res.status(500).send({ error: error });
+             })
+                
+            } catch (error) {
+                 res.send({ error: error.message });
+             }
+       }
+
+       const deleteBill = async (req,res) => {
+        try {
+            if(req.params.id){
+                await Bill.findByIdAndDelete(req.params.id)
+                .then(data => {
+                    res.status(200).send({data: data});
+                })
+                .catch(error => {
+                    res.status(500).send({error: error.message});
+                })
+            }
+        } catch (error) {
+            res.send({error: error.message});
+        }
+    } 
+
 
 
 module.exports = {
-    addBill
+    addBill,
+    getBill,
+    deleteBill
 }
 
 

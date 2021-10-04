@@ -51,10 +51,34 @@ const deleteInsertPayment = async(req, res) => {
         res.send({ error: error.message });
     }
 }
+const getInsertPaymentById = async(req, res) => {
+    if (req.params.id) {
+        await InsertPayment.findById(req.params.id)
+            .then((data) => {
+                res.status(200).send({ data: data });
+            })
+            .catch((error) => {
+                res.status(500).send({ error: error });
+            });
+    }
+}
+const updateInsertPayment = async(req, res) => {
+    if (req.body && req.params.id) {
+        await InsertPayment.findByIdAndUpdate(req.params.id, { $set: req.body })
+            .then((data) => {
+                res.status(200).send({ data: data });
+            })
+            .catch((error) => {
+                res.status(500).send({ error: error })
+            });
+    }
+}
 
 
 module.exports = {
     addInsertPayment,
     getInsertPayment,
-    deleteInsertPayment
+    deleteInsertPayment,
+    getInsertPaymentById,
+    updateInsertPayment
 }
