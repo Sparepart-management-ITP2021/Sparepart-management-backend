@@ -43,4 +43,6 @@ app.use('/bill', BillAPI())
 app.use('/employee', EmployeeAPI() );
 app.use('/attendance',AttendanceAPI());
 app.use('/leave',LeaveAPI());
+app.use('/inventory', InventoryAPI());
+
 app.listen(port, () => console.log("You are listening to port " + port));

@@ -7,6 +7,8 @@ const EmployeeAPI = () => {
     router.post("/add-employee", EmployeeController.addEmployee);
     router.get("/get-employee", EmployeeController.getEmployee);
     router.delete("/delete-employee/:id",EmployeeController.deleteEmployee);
+    router.get("/get-employee/:id", EmployeeController.  getEmployeeById);
+    router.put("/update-employee/:id", EmployeeController.updateEmployee);
     return router;
 }
 
