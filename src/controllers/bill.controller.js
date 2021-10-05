@@ -52,12 +52,38 @@ const getBill = async(req, res) => {
         }
     } 
 
+    const getBillById = async(req, res) => {
+        if(req.params.id){
+            await Bill.findById(req.params.id)
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error });
+                });
+        }
+    }
+
+    const updateBill = async(req, res) => {
+        if(req.body && req.params.id){
+            await Bill.findByIdAndUpdate(req.params.id, { $set: req.body })
+                .then((data) => {
+                    res.status(200).send({ data: data });
+                })
+                .catch((error) => {
+                    res.status(500).send({ error: error })
+                });
+        }
+    }
+
 
 
 module.exports = {
     addBill,
     getBill,
-    deleteBill
+    deleteBill,
+    getBillById,
+    updateBill
 }
 
 
